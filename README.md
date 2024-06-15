@@ -1,12 +1,12 @@
-# Task 1 LOC Counting
+# Task 2 OO Desing
 
-This Java project provides a utility for counting the number of lines in Java source files, distinguishing between physical lines and lines of code (excluding comments and blank lines). It includes functionality to count lines in individual files or recursively in directories. The program takes command line arguments to specify the type of count (physical or lines of code) and the target directory or file. Unit tests are included to ensure the accuracy of the counting logic.
+This project comprises two Java classes, MyLinkedList and Calculate, tailored to facilitate numerical data manipulation within a linked list structure. The MyLinkedList class encapsulates core functionalities such as adding, removing, and accessing elements, along with computing mean and standard deviation. On the other hand, the Calculate class acts as a utility, leveraging the capabilities of MyLinkedList to process numerical data from a file, calculate mean and standard deviation, and present the results.
 
 
 
 ## Getting Started
 Download the project from 
-[the repository.](https://github.com/Sebasvasquezz/Task1-LOC-Counting)
+[the repository.](https://github.com/Sebasvasquezz/Task2-OO-Desing)
 
 ### Prerequisites
 
@@ -26,9 +26,9 @@ Download the project from
 
 ## Running the tests
 
-These tests focus on ensuring the correct functioning of the counting methods for both a file and all files in a directory, using two auxiliary test files (Calculator.java and HelloWorld.java). To delve deeper into the code base of these tests, review the CountLinesTest class.
+The unit tests included in this project aim to validate the accuracy and reliability of the statistical calculation methods implemented within the Calculate class. These tests comprehensively cover scenarios involving calculation of mean and standard deviation for numerical data stored in a linked list, ensuring the correctness of the underlying algorithms and calculations. For a detailed examination of the test suite, it's recommended to explore the Tests class, which provides insights into the test scenarios and assertions used to verify the functionality of the Calculate class.
 
-Once the repository is downloaded, open a command prompt and run the following command to run the unit tests:
+To execute the unit tests after cloning the repository, navigate to the project directory in a command prompt and enter the following command:
 
 ```
 mvn test
@@ -37,33 +37,23 @@ The execution:
 
 ![Execution of unit tests](image.png)
 
+
 ## Design
 
 ### Class Diagram
-The class diagram was made by using Astah. To go deeper into it, check out the LOC-Counting.asta file.
+The class diagram was made by using Astah. To go deeper into it, check out the OO-Desing.asta file.
+
 ![Class Diagram](image-1.png)
-* CountLines: Main class that contains the main method to start the program. It also contains methods for counting lines in a directory, in a file, and for counting physical and code lines.
 
-    * main: Main method that handles program execution and accepts command line arguments.
+The class diagram depicts two main classes: MyLinkedList and Calculate, along with an inner class Node<T> within the MyLinkedList class.
 
-    * countLinesInDirectory: Method to count lines in all files within a directory and its subdirectories. 
+* MyLinkedList represents a simple linked list data structure capable of storing elements of any type. It contains private members head and size to manage the structure of the linked list. Key functionalities include adding elements to the list, removing elements, accessing elements by index, and computing the mean and standard deviation of the stored elements. Additionally, it implements the Iterable interface to enable iteration over its elements.
 
-    * countLinesInFile: Method to count lines in a specific file.
+* The inner class Node<T> encapsulates the individual nodes of the linked list, holding data of type T and a reference to the next node in the sequence.
 
-    * countPhysicalLines: Method to count physical lines in a file and display the file name along with the result.
+* Calculate serves as a utility class for performing calculations on numerical data read from a file. It utilizes the MyLinkedList class to store the numbers read from the file and provides methods for reading numbers from a file, calculating the mean and standard deviation of the numbers, and printing the results to the console. Additionally, it offers a main method to facilitate command-line execution and a method to retrieve the linked list containing the numbers.
 
-    * countLinesOfCode: Method to count lines of code in a file and display the file name along with the result.
-
-This class diagram represents the basic structure and functionality of the line-of-code counting system, allowing lines to be counted in both individual files and entire directories.
-
-### LOC/h Calculation
-I spent 5 hours on this task and generated 168 lines of code.
-![LOC count](image-3.png)
-    ```
-    lines = 168 LOC
-    time = 5 h
-    LOC/h = 168/5 = 33.6
-    ```
+This diagram succinctly illustrates the structure and relationships between the classes, highlighting their key attributes and functionalities within the context of the project.
 
 ## Build the project
 * Run the comand:
@@ -72,14 +62,15 @@ I spent 5 hours on this task and generated 168 lines of code.
     ```
 * Run the application:
     ```
-    mvn exec:java -Dexec.args="<countType> <pathString>" 
+    mvn exec:java -Dexec.args="<pathString>" 
     ```
     or 
     ```
-    & 'C:\Program Files\Java\jdk-21\bin\java.exe' '-XX:+ShowCodeDetailsInExceptionMessages' '-cp' 'E:\ARSW\Tarea1\LOC-Counting\target\classes' 'edu.escuelaing.arsw.ASE.app.CountLines' loc E:\ARSW\Tarea1\LOC-Counting\src\main\java\edu\escuelaing\arsw\ASE\app 
+    & 'C:\Program Files\Java\jdk-21\bin\java.exe' '-XX:+ShowCodeDetailsInExceptionMessages' '-cp' 'E:\ARSW\Tarea2\OO-Desing\target\classes' 'edu.escuelaing.arsw.ASE.app.Calculate' E:\ARSW\Tarea2\OO-Desing\testFiles\Column1.txt 
     ```
 * And the execution:
-    ![Execition](image-2.png)
+
+    ![Execution](image-2.png)
 ### Phase architecture
 * To allow running the main application directly from the command line using Maven (mvn exec:java):
     ```
@@ -90,7 +81,7 @@ I spent 5 hours on this task and generated 168 lines of code.
           <artifactId>exec-maven-plugin</artifactId>
           <version>3.0.0</version>
           <configuration>
-              <mainClass>edu.escuelaing.arsw.ASE.app.CountLines</mainClass>
+              <mainClass>edu.escuelaing.arsw.ASE.app.Calculate</mainClass>
           </configuration> 
     </plugins>
   </build>
@@ -105,7 +96,7 @@ I spent 5 hours on this task and generated 168 lines of code.
 
 ## Date
 
-June 12, 2024
+June 15, 2024
 
 ## License
 
